@@ -1,0 +1,26 @@
+ use weixin_getUserImage;
+create table getUserImage(
+    -> id int unsigned primary key auto_increment,
+    -> nickname varchar(40) ,
+    -> openID varchar(100),
+    -> sex varchar(10),
+    -> region varchar(70),
+    -> subscribe_time varchar(50)
+    -> );
+
+//
+//添加唯一约束
+ALTER TABLE getUserImage ADD UNIQUE (openID );
+//
+alter table getUserImage change province region varchar(60);
+
+//修改数据库格式
+alter database weixin_getUserImage character set utf8; 
+//修改数据表编码
+ ALTER TABLE  getUserImage DEFAULT CHARACTER SET utf8;
+//该命令用于将表test中name字段的编码方式改为utf8
+ALTER TABLE getUserImage CHANGE sex sex VARCHAR(10) CHARACTER SET utf8 NOT NULL; 
+
+ALTER TABLE getUserImage CHANGE nickname nickname VARCHAR(40) CHARACTER SET utf8 NOT NULL; 
+ALTER TABLE getUserImage CHANGE region region VARCHAR(70) CHARACTER SET utf8 NOT NULL; 
+ALTER TABLE getUserImage CHANGE subscribe_time subscribe_time VARCHAR(70) CHARACTER SET utf8 NOT NULL; 
